@@ -1,0 +1,57 @@
+#header{
+    border: 1px tomato solid;
+    margin: 10px 10px 0px 400px;
+    white-space: nowrap;
+    font-size: 30px;
+}
+#header span{
+    display: none;
+}
+#menu{
+    position: absolute;
+    top: 50px;
+    left: 40px;
+    font-size: 40px;
+}
+#logo{
+    position: absolute;
+    top: 30px;
+    left: 100px;
+    width: 200px;
+}
+#icon{
+    position: absolute;
+    top: 30px;
+    left: 1600px;
+    font-size: 40px;
+    --fa-animation-duration: 10s
+}
+
+#mySidenav{
+    color: silver;
+    border: 2px gold solid;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    text-align: right;
+    background-color: black;
+    transition: 0.3s;
+}
+
+#mySidenav a{
+    color: silver;
+    text-decoration: none;
+    display: block;
+    padding: 20px 20px 20px 0px;
+}
+
+#closeSideNavBtn{
+    font-size: 30px;
+}
+
+#welcomeMsg{
+    text-align: left;
+    padding: 0px 0px 0px 300px;
+}

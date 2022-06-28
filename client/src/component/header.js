@@ -1,0 +1,64 @@
+import { useState } from "react";
+import style from "../moduleCSS/header.module.css";
+import title from "../src_assets/title.png";
+
+function Sidenav({ navWidth, onClick, handlePage }) {
+  return (
+    <div id={style.mySidenav} style={{ width: navWidth, opacity: navWidth }}>
+      <a id={style.closeSideNavBtn} onClick={onClick}>
+        &times;
+      </a>
+      <a href="/" onClick={handlePage}>HOME</a>
+      <a href="/auth/mypage" onClick={handlePage}>
+        MyPage
+      </a>
+      <a href="/auth/logout_process">Logout</a>
+    </div>
+  );
+}
+
+function Header({ page, setPage }) {
+  const [navWidth, setnavWidth] = useState(0);
+
+  const onClick = () => {
+    if (navWidth === 0) {
+      setnavWidth((current) => 250);
+    } else {
+      setnavWidth((current) => 0);
+    }
+  };
+
+  const handlePage = (event) => {
+    event.preventDefault();
+    const clickedPage = event.target.innerText
+    console.log(clickedPage)
+    if(clickedPage === 'HOME'){
+      setPage(current => 'HOME');
+    }else{
+      setPage(current => 'MYPAGE');
+    }
+    
+  };
+  return (
+    <div id={style.header}>
+      <i
+        id={style.menu}
+        className="fa-solid fa-bars fa-2xl"
+        onClick={onClick}
+      ></i>
+      <img id={style.logo} src={title} alt="title" />
+      <i id={style.icon} className="fa-solid fa-circle-notch fa-spin"></i>
+      <span>Rings of Jupiter</span>
+      <Sidenav
+        navWidth={navWidth}
+        onClick={onClick}
+        handlePage={handlePage}
+      />
+      <div id={style.welcomeMsg}>
+        <p>취향나눔 소규모 커뮤니티</p>
+      </div>
+    </div>
+  );
+}
+
+export default Header;
