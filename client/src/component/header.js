@@ -8,11 +8,11 @@ function Sidenav({ navWidth, onClick, handlePage }) {
       <a id={style.closeSideNavBtn} onClick={onClick}>
         &times;
       </a>
-      <a href="/" onClick={handlePage}>HOME</a>
+      <a href="/" onClick={handlePage}>Home</a>
       <a href="/auth/mypage" onClick={handlePage}>
-        MyPage
+        Join
       </a>
-      <a href="/auth/logout_process">Logout</a>
+      <a href="/auth/logout_process" onClick={handlePage}>Login</a>
     </div>
   );
 }
@@ -32,10 +32,12 @@ function Header({ page, setPage }) {
     event.preventDefault();
     const clickedPage = event.target.innerText
     console.log(clickedPage)
-    if(clickedPage === 'HOME'){
-      setPage(current => 'HOME');
-    }else{
-      setPage(current => 'MYPAGE');
+    if(clickedPage === 'Home'){
+      setPage(current => 'Home');
+    }else if (clickedPage === 'Join'){
+      setPage(current => 'Join');
+    }else if (clickedPage === 'Login'){
+      setPage(current => 'Login')
     }
     
   };

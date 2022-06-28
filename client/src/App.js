@@ -5,7 +5,7 @@ import Footer from './component/footer.js'
 import { useState } from "react";
 
 function App() {
-  const [page, setPage] = useState("HOME");
+  const [page, setPage] = useState("Home");
   return (
     <div className="App">
       <Header page={page} setPage={setPage} />
