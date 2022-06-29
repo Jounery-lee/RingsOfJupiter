@@ -79,7 +79,7 @@ function Body({ page, isLogin, setIsLogin }) {
       const password = input[1].value;
       event.preventDefault();
       //fetch에서 2번째 인자의.. 공포..
-      fetch("http://localhost:3001/auth", {
+      fetch("https://rings-of-jupiter.herokuapp.com/auth", {
         headers: {
           "Content-type": "application/json",
         },
