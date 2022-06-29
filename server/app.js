@@ -15,23 +15,37 @@ app.get('/', (req, res)=>{
 const memberDB = [
     {
         id : '주연',
-        password : 123,
+        password : "123",
     },
     {
         id : 'BSV',
-        password : 321,
+        password : "321",
     }
 ]
 
+
+
 app.post('/auth', (req, res)=>{
-    if(req.body.id === memberDB[0].id){
-        if(Number(req.body.password) === memberDB[0].password){
-            res.send(memberDB)
+    //frontend에서 fetch POST method의 body에다가 담아준 정보가 req.body로 들어왔다.
+    const data = req.body
+    if(data.id === memberDB[0].id){
+        if(data.password === memberDB[0].password){
+            res.json({
+                success: true,
+                id: memberDB[0].id,
+                password: memberDB[0].password
+            })
         }else{
-            res.send('sword')
+            res.json({
+                success: false,
+                msg: "비번 틀림"
+            })
         }
     }else{
-        res.send(memberDB)
+        res.json({
+            success: false,
+            msg: "다틀림",
+        })
     }
 })
 

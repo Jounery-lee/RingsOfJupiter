@@ -2,22 +2,40 @@ import { useState } from "react";
 import style from "../moduleCSS/header.module.css";
 import title from "../src_assets/title.png";
 
-function Sidenav({ navWidth, onClick, handlePage }) {
+function Sidenav({ navWidth, onClick, handlePage, isLogin }) {
+  
+  const state =
+    isLogin === false ? (
+      <div>
+        <a href="/auth/mypage" onClick={handlePage}>
+          Join
+        </a>
+        <a href="/auth/logout_process" onClick={handlePage}>
+          Login
+        </a>
+      </div>
+    ) : (
+      <div>
+        <a href="/auth/logout_process" onClick={handlePage}>
+          Mypage
+        </a>
+      </div>
+    );
+
   return (
     <div id={style.mySidenav} style={{ width: navWidth, opacity: navWidth }}>
       <a id={style.closeSideNavBtn} onClick={onClick}>
         &times;
       </a>
-      <a href="/" onClick={handlePage}>Home</a>
-      <a href="/auth/mypage" onClick={handlePage}>
-        Join
+      <a href="/" onClick={handlePage}>
+        Home
       </a>
-      <a href="/auth/logout_process" onClick={handlePage}>Login</a>
+      {state}
     </div>
   );
 }
 
-function Header({ page, setPage }) {
+function Header({ page, setPage, isLogin }) {
   const [navWidth, setnavWidth] = useState(0);
 
   const onClick = () => {
@@ -30,16 +48,17 @@ function Header({ page, setPage }) {
 
   const handlePage = (event) => {
     event.preventDefault();
-    const clickedPage = event.target.innerText
-    console.log(clickedPage)
-    if(clickedPage === 'Home'){
-      setPage(current => 'Home');
-    }else if (clickedPage === 'Join'){
-      setPage(current => 'Join');
-    }else if (clickedPage === 'Login'){
-      setPage(current => 'Login')
+    const clickedPage = event.target.innerText;
+    console.log(clickedPage);
+    if (clickedPage === "Home") {
+      setPage((current) => "Home");
+    } else if (clickedPage === "Join") {
+      setPage((current) => "Join");
+    } else if (clickedPage === "Login") {
+      setPage((current) => "Login");
+    } else if (clickedPage === 'Mypage'){
+      setPage((current) => "Mypage")
     }
-    
   };
   return (
     <div id={style.header}>
@@ -55,6 +74,7 @@ function Header({ page, setPage }) {
         navWidth={navWidth}
         onClick={onClick}
         handlePage={handlePage}
+        isLogin={isLogin}
       />
       <div id={style.welcomeMsg}>
         <p>취향나눔 소규모 커뮤니티</p>

@@ -6,10 +6,11 @@ import { useState } from "react";
 
 function App() {
   const [page, setPage] = useState("Home");
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <div className="App">
-      <Header page={page} setPage={setPage} />
-      <Body page={page}/>
+      <Header page={page} setPage={setPage} isLogin={isLogin} setIsLogin={setIsLogin}/>
+      <Body page={page} isLogin={isLogin} setIsLogin={setIsLogin}/>
       <Footer />
     </div>
   );
