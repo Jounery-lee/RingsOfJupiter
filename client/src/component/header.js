@@ -3,8 +3,9 @@ import style from "../moduleCSS/header.module.css";
 import title from "../src_assets/title.png";
 
 function Sidenav({ navWidth, onClick, handlePage, isLogin }) {
-  
-  const state =
+  //좌측에서 움직이는 세로 줄 메뉴 Component
+  //isLogin의 값에 따라 보여주는 메뉴가 달라짐.
+  const loginState =
     isLogin === false ? (
       <div>
         <a href="/auth/mypage" onClick={handlePage}>
@@ -30,15 +31,14 @@ function Sidenav({ navWidth, onClick, handlePage, isLogin }) {
       <a href="/" onClick={handlePage}>
         Home
       </a>
-      {state}
+      {loginState}
     </div>
   );
 }
 
-function Header({ page, setPage, isLogin }) {
+function Header({ setPage, isLogin }) {
   const [navWidth, setnavWidth] = useState(0);
-
-  const onClick = () => {
+  const handleNavWidth = () => {
     if (navWidth === 0) {
       setnavWidth((current) => 250);
     } else {
@@ -49,15 +49,14 @@ function Header({ page, setPage, isLogin }) {
   const handlePage = (event) => {
     event.preventDefault();
     const clickedPage = event.target.innerText;
-    console.log(clickedPage);
     if (clickedPage === "Home") {
       setPage((current) => "Home");
     } else if (clickedPage === "Join") {
       setPage((current) => "Join");
     } else if (clickedPage === "Login") {
       setPage((current) => "Login");
-    } else if (clickedPage === 'Mypage'){
-      setPage((current) => "Mypage")
+    } else if (clickedPage === "Mypage") {
+      setPage((current) => "Mypage");
     }
   };
   return (
@@ -65,14 +64,14 @@ function Header({ page, setPage, isLogin }) {
       <i
         id={style.menu}
         className="fa-solid fa-bars fa-2xl"
-        onClick={onClick}
+        onClick={handleNavWidth}
       ></i>
       <img id={style.logo} src={title} alt="title" />
       <i id={style.icon} className="fa-solid fa-circle-notch fa-spin"></i>
       <span>Rings of Jupiter</span>
       <Sidenav
         navWidth={navWidth}
-        onClick={onClick}
+        onClick={handleNavWidth}
         handlePage={handlePage}
         isLogin={isLogin}
       />
