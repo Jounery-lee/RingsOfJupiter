@@ -19,6 +19,31 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/build/index.html");
 });
 
+app.post("/auth/login", (req, res) => {
+  const calledData = req.body;
+  async function callDb() {
+    //member TABLE을 불러온다. 이게 무슨 문법이냐? 자동수정되는데.
+    const db = await (await connection).query("SELECT * FROM member");
+    //불러온 TABLE에서 맞는 memeber.id가 있는지 확인하고 return으로 있는 객체를 반환함. 배열의 요소들이 다 객체걸랑.
+    function findMemberid(memberid) {
+      return memberid.memberid === calledData.id;
+    }
+    //해당하는 값이 있을때 배열의 값 (즉 여기서는 객체)
+    const cheakMember = db[0].find(findMemberid);
+    //로그인 프로세스 조건문
+    if (cheakMember === undefined) {
+      console.log("일치하는 아이디가 없습니다");
+    } else {
+      if (cheakMember.password === calledData.password) {
+        console.log("로그인하셨습니다.");
+      } else {
+        console.log("비번이 다릅니다.");
+      }
+    }
+  }
+
+  callDb();
+});
 app.post("/auth/join", (req, res) => {
   const calledData = req.body;
   async function callDb() {
@@ -73,7 +98,7 @@ app.post("/auth", (req, res) => {
 });
 
 app.post("/write", (req, res) => {
-  topics.push(req.body);
+  console.log(req.body);
 });
 app.listen(port, () => {
   console.log("on 3001");
