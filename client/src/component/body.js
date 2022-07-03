@@ -64,7 +64,7 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       const password = event.target.parentElement[4].value;
       const cheakPassword = event.target.parentElement[5].value;
 
-      fetch("http://localhost:3001/auth/join", {
+      fetch("https://rings-of-jupiter.herokuapp.com/auth/join", {
         headers: { "content-type": "application/json" },
         method: "POST",
         body: JSON.stringify({
@@ -123,8 +123,7 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       event.preventDefault();
       //fetch에서 2번째 인자의.. 공포..
       //http://localhost:3001/auth
-      //https://rings-of-jupiter.herokuapp.com/auth
-      fetch("http://localhost:3001/auth", {
+      fetch("https://rings-of-jupiter.herokuapp.com/auth", {
         headers: {
           "Content-type": "application/json",
         },
@@ -190,7 +189,7 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       const input = event.target.parentElement;
       const title = input[0].value;
       const description = input[1].value;
-      fetch("http://localhost:3001/write", {
+      fetch("https://rings-of-jupiter.herokuapp.com/write", {
         headers: { "content-type": "application/json" },
         method: "POST",
         body: JSON.stringify({

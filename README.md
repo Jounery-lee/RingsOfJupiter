@@ -32,6 +32,11 @@
     - 네이버, 카카오, 구글 로그인 OAuth 인증 시스템을 만들자 ( 할 일 )
     - Front와 Back과 DB를 연결하는 API를 구성하자 ( 할 일 )
     - ****Back과 DB가 연결되는 중 회원가입절차는 만들었고, 로그인 절차 만들 차례( 할 일 )
+    - Local MySQL은 heroku에서 작동을 안한다. => heroku Addons ClearDB를 사용하기로 했다.
+      - clearDB는 addon설치 해줘야하고. (heroku addons:create cleardb:ignite), 만들어진 db의 주소를 heroku config | grep CLEARDB_DATABASE_URL로 찾아와야 한다.
+      - mysql://bbadc38db84c9f:2251e22c@us-cdbr-east-06.cleardb.net/heroku_92ea96d00cdd65c?reconnect=true 대충 이런주소가 나오는데
+      - 골뱅이 뒤부터 .net까지 host이름 us-cdbr-east-06.cleardb.net
+      - 골뱅이 앞의 무작위 문자열은 :을 중심으로 앞이 user 뒤가 password
   - DB server
     - 기존 Databases를 좀 정리하자.. 웩( 0702 )
     - 새로운 Databases를 만들자 ( 0702 )
@@ -46,4 +51,7 @@
 ## 2) 적고싶은거 쓰삼..  
 
 - 왜 웹개발을 나눠서 하는지 알 것 같은 날이다.. (0702)
-- 헤로쿠 또 망가짐. 예상되는 지점은 MYSQL, fetch 두 군데임.
+- 헤로쿠 또 망가짐. 예상되는 지점은 MYSQL, fetch 두 군데임. 아마 MYSQL이 로컬이라서 그런듯. 헤로쿠에 postgres라는게 있다는데 알아보세요.
+  - 헤로쿠에서 mysql을 쓸때는 clearDB addon으로 사용 (ignite PLAN이 무료)
+  - 헤로쿠에서 뭔갈 할때는 어떤 프로젝트에서 하는건지 지정 해 줘야 함
+  - git init && heroku apps && heroku git:remote -a [APP_NAME]
