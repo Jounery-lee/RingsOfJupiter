@@ -65,7 +65,9 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       const cheakPassword = event.target.parentElement[5].value;
 
       fetch("https://rings-of-jupiter.herokuapp.com/auth/join", {
-        headers: { "content-type": "application/json" },
+        headers: { 
+          "content-type": "application/json",
+          'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com' },
         method: "POST",
         body: JSON.stringify({
           memberid: memberid,
@@ -126,6 +128,7 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       fetch("https://rings-of-jupiter.herokuapp.com/auth", {
         headers: {
           "Content-type": "application/json",
+          'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com'
         },
         method: "POST",
         body: JSON.stringify({
@@ -190,7 +193,9 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
       const title = input[0].value;
       const description = input[1].value;
       fetch("https://rings-of-jupiter.herokuapp.com/write", {
-        headers: { "content-type": "application/json" },
+        headers: { 
+          "content-type": "application/json",
+          'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com' },
         method: "POST",
         body: JSON.stringify({
           title: title,
@@ -216,12 +221,3 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
 
 export default Body;
 
-// <TableRow no="1" title="title1" date="date1" />
-// <TableRow no="2" title="title2" date="date2" />
-// <TableRow no="3" title="title3" date="date3" />
-// <TableRow no="4" title="title4" date="date4" />
-// <TableRow no="5" title="title5" date="date5" />
-// <TableRow no="6" title="title6" date="date6" />
-// <TableRow no="7" title="title7" date="date7" />
-// <TableRow no="8" title="title8" date="date8" />
-// <TableRow no="9" title="title9" date="date9" />
