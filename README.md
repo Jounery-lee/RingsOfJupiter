@@ -37,9 +37,11 @@
       - mysql://bbadc38db84c9f:2251e22c@us-cdbr-east-06.cleardb.net/heroku_92ea96d00cdd65c?reconnect=true 대충 이런주소가 나오는데
       - 골뱅이 뒤부터 .net까지 host이름 us-cdbr-east-06.cleardb.net
       - 골뱅이 앞의 무작위 문자열은 :을 중심으로 앞이 user 뒤가 password
+    - CORS정책 위반은 fetch의 OPTION의 헤더에다가 허용 URL을 넣어주는것으로 해결한다.
   - DB server
     - 기존 Databases를 좀 정리하자.. 웩( 0702 )
     - 새로운 Databases를 만들자 ( 0702 )
+    - clearDB연동 완료. 여기는 한글이 지원 안되니 Only 영어로만 하자.
 - 기존 프로젝트 리팩토링
   - 지뢰 찾기 (게임 기록판, 실행 취소 버튼, 남은 지뢰 갯수 등)
   - Me:sic ( 발전방향이 떠오르지 않음.)
