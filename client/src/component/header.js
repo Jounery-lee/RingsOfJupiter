@@ -8,29 +8,29 @@ function Sidenav({ navWidth, onClick, handlePage, isLogin }) {
   const loginState =
     isLogin === false ? (
       <div>
-        <a href="/auth/mypage" onClick={handlePage}>
+        <div className={style.sideMenuBtn} onClick={handlePage}>
           Join
-        </a>
-        <a href="/auth/logout_process" onClick={handlePage}>
+        </div>
+        <div className={style.sideMenuBtn} onClick={handlePage}>
           Login
-        </a>
+        </div>
       </div>
     ) : (
       <div>
-        <a href="/auth/logout_process" onClick={handlePage}>
+        <div className={style.sideMenuBtn} onClick={handlePage}>
           Mypage
-        </a>
+        </div>
       </div>
     );
 
   return (
     <div id={style.mySidenav} style={{ width: navWidth, opacity: navWidth }}>
-      <a id={style.closeSideNavBtn} onClick={onClick}>
+      <div id={style.closeSideNavBtn} onClick={onClick}>
         &times;
-      </a>
-      <a href="/" onClick={handlePage}>
+      </div>
+      <div className={style.sideMenuBtn} onClick={handlePage}>
         Home
-      </a>
+      </div>
       {loginState}
     </div>
   );

@@ -52,6 +52,10 @@
     font-size: 30px;
 }
 
+.sideMenuBtn{
+    margin: 30px;
+}
+
 #welcomeMsg{
     padding: 0px 0px 0px 0px;
 }

@@ -4,7 +4,9 @@ function Write() {
     const input = event.target.parentElement;
     const title = input[0].value;
     const description = input[1].value;
-    fetch("https://rings-of-jupiter.herokuapp.com/write", {
+    //https://rings-of-jupiter.herokuapp.com/write
+    //http://localhost:3001/crud/write
+    fetch("http://localhost:3001/crud/write", {
       headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "https://rings-of-jupiter.herokuapp.com",

@@ -24,7 +24,7 @@ function Body({ page, setPage, isLogin, setIsLogin }) {
     );
   } else if (page === "Write") {
     return (
-    <Write />
+    <Write setPage={setPage} />
     );
   }
 }
