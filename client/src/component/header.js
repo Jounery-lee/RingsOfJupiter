@@ -76,7 +76,7 @@ function Header({ setPage, isLogin }) {
         isLogin={isLogin}
       />
       <div id={style.welcomeMsg}>
-        <p>취향나눔 소규모 커뮤니티</p>
+        <p>취향나눔 소규모 커뮤니티!</p>
       </div>
     </div>
   );
