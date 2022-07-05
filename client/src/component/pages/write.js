@@ -4,6 +4,7 @@ function Write() {
     const input = event.target.parentElement;
     const title = input[0].value;
     const description = input[1].value;
+    const author = input[2].value;
     //https://rings-of-jupiter.herokuapp.com/write
     //http://localhost:3001/crud/write
     fetch("http://localhost:3001/crud/write", {
@@ -15,6 +16,7 @@ function Write() {
       body: JSON.stringify({
         title: title,
         description: description,
+        author: author
       }),
     });
   }
@@ -22,10 +24,13 @@ function Write() {
     <div>
       <form>
         <p>
-          <input type="text" placeholder="title" name="title" />
+          <input type="text" placeholder="title" />
         </p>
         <p>
-          <textarea placeholder="description" name="description" />
+          <textarea placeholder="description" />
+        </p>
+        <p>
+          <input typr='text' placeholder="author" />
         </p>
         <button onClick={handleWrite}>Write</button>
       </form>

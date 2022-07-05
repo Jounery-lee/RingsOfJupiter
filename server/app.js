@@ -28,8 +28,7 @@ app.get("/", (req, res) => {
 app.get("/topicdata", (req, res)=>{
   async function callDb(){
     const topicList = await (await connection).query("SELECT * FROM topic")
-    console.log(topicList[0])
-    res.json(topicList[0])
+    res.send(topicList[0])
   }
   callDb();
 })

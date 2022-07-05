@@ -1,9 +1,7 @@
 import style from "../../moduleCSS/body.module.css";
+import { useEffect, useState } from "react";
 
-
-
-function Home( {setPage} ) {
-
+function Home({ setPage }) {
   function TableRow({ no, title, date }) {
     return (
       <tbody>
@@ -16,28 +14,39 @@ function Home( {setPage} ) {
     );
   }
 
-  // topics => 글 데이터 topicsList = 데이터를 반복문으로.
-  // topics를 이제 불러온 데이터로 바꿔야 하는데. 왜 안되냐?
-  let topics = [
-    { id: "1", title: "title1", date: "date1" },
-    { id: "2", title: "title2", date: "date2" },
-  ];
+  const [data, setData] = useState([]);
 
-  let topicsList = topics.map((index) => {
+  useEffect(() => {
+    async function A() {
+      const a = await fetch("http://localhost:3001/topicdata");
+      const b = await a.json();
+      await setData((current) => b);
+    }
+    A();
+  }, []);
+
+//불러온 데이터를 State에 넣는다.
+//State에 들어간 배열을 map을 이용해서 적절한 값으로 return한다.
+//map 메소드 사용에서 아주 아주 아주 취약했기 때문에 이런 경우가 생긴듯 하다.
+
+  const TopicList = ({ data }) => {
     return (
-      <TableRow
-        key={index.id}
-        no={index.id}
-        title={index.title}
-        date={index.date}
-      />
+      <>
+        {data.map((data) => {
+          return <TableRow
+          key={data.id} 
+          no={data.id} 
+          title={data.title} 
+          date={data.date} />;
+        })}
+      </>
     );
-  });
+  };
 
   function writeTopic() {
-    setPage(currnet => "Write")
+    setPage((currnet) => "Write");
   }
-  
+
   return (
     <div>
       <div id={style.container}>
@@ -49,7 +58,7 @@ function Home( {setPage} ) {
               <th id={style.tableDate}>Date</th>
             </tr>
           </thead>
-          {topicsList}
+          <TopicList data={data} />
         </table>
       </div>
       <div>

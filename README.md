@@ -14,13 +14,16 @@
 <뭐부터 언제 까지?>
 
 - Rings of Jupiter를 7월 4일까지 끝내겠다.
+
   - 웹 디자인 
     - Home화면과 Mypage화면을 구분 지음(0628)
     - Home화면에 Table을 구성해서 게시판 레이아웃을 만듦(0628)
     - Mypage 화면은 재활용 했는데 Update에서 Join으로 만들자(0629) 
     - Font를 설정해 주자 재활용하면 됨 ( 할 일 )
+
   - 프론트엔드
     - Body.js 모듈화했음. ( 0703 )
+
   - 백엔드 server
     - DB를 연동하지 않는 인증부터 만들어 구현 하자 그 뒤로 CRUD기능을 추가하자. (0630)
     - fetch의 2번째 인자에 대해 큰 이슈가 있었다. 해결 함.(0630)
@@ -28,10 +31,12 @@
     - setState를 이용하여 isLogin 구현 중 (0701)
     - 갑자기 코드가 너무 복잡해져서 셀프 리뷰 한버 하며 주석달기 시작 ( 0630 )
     - CRUD를 구성하여 일단 인증하면 글 쓰고 지울 수 있게 만들자.( 할 일 )
+      - CRUD중 CREATE 구현 DB에 저장까지 됨.
+      - READ도 부분적으로 구현 함( 메인 화면에 목록 띄우기) => 각 제목을 클릭하면 내용으로 가도록 구성하자.    
     - 로그인은 구성 했다. 이제 로그인인 상태와 아닌상태를 구분해야 하는데. 세션을 확인하러 가자. (시급한문제입니다!!!!!!!!!!!!!!!!!!!!!!!!!)
     - DB가 없으니 코드안에서 하드코딩 중인데 얼른 DB 무꺼버리자 ( 0702 )
     - 네이버, 카카오, 구글 로그인 OAuth 인증 시스템을 만들자 ( 할 일 )
-    - Front와 Back과 DB를 연결하는 API를 구성하자 ( 할 일 )
+    - Front와 Back과 DB를 연결하는 API를 구성하자 ( 0706 )
     - ****Back과 DB가 연결되는 중 회원가입절차는 만들었고, 로그인 절차 만들 차례( 할 일 )
     - Local MySQL은 heroku에서 작동을 안한다. => heroku Addons ClearDB를 사용하기로 했다.
       - clearDB는 addon설치 해줘야하고. (heroku addons:create cleardb:ignite), 만들어진 db의 주소를 heroku config | grep CLEARDB_DATABASE_URL로 찾아와야 한다.
@@ -39,10 +44,14 @@
       - 골뱅이 뒤부터 .net까지 host이름 us-cdbr-east-06.cleardb.net
       - 골뱅이 앞의 무작위 문자열은 :을 중심으로 앞이 user 뒤가 password
     - CORS정책 위반은 fetch의 OPTION의 헤더에다가 허용 URL을 넣어주는것으로 해결한다.
+
   - DB server
     - 기존 Databases를 좀 정리하자.. 웩( 0702 )
     - 새로운 Databases를 만들자 ( 0702 )
     - clearDB연동 완료. 여기는 한글이 지원 안되니 Only 영어로만 하자.
+
+
+    
 - 기존 프로젝트 리팩토링
   - 지뢰 찾기 (게임 기록판, 실행 취소 버튼, 남은 지뢰 갯수 등)
   - Me:sic ( 발전방향이 떠오르지 않음.)
@@ -58,3 +67,6 @@
   - 헤로쿠에서 mysql을 쓸때는 clearDB addon으로 사용 (ignite PLAN이 무료)
   - 헤로쿠에서 뭔갈 할때는 어떤 프로젝트에서 하는건지 지정 해 줘야 함
   - git init && heroku apps && heroku git:remote -a [APP_NAME]
+- 백엔드에서 보낸 DB자료를 프론트에서 렌더링 하는게 이틀 걸렸다.
+ - array.map()의 사용이 아주 아주 약하고 여기서 크게 꼬여서 시간을 한참 썼다.
+ - 또 한가지는 빨간 경고창을 계속 무시했다는 점이다 ^^^^^^^;

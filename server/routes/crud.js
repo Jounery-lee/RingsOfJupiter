@@ -18,8 +18,9 @@ router.post("/write", (req, res) => {
   console.log(req.body);
   //req.body로 넘어오는 정보가 모자라서 아직 db저장은 구현하지 않음.
   async function callDb(){
-    const calledData = await (await connection).query('SELECT * FROM topic')
-    console.log(calledData[0])
+    await (await connection).query(`
+    INSERT INTO topic(title, description, date, author)
+    VALUES ('${req.body.title}', '${req.body.description}', CURRENT_DATE(), '${req.body.author}')`)
   }
   callDb()
 });
