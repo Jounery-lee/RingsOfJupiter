@@ -11,7 +11,7 @@ function Login(setIsLogin, setPage, isLogin){
     fetch("https://rings-of-jupiter.herokuapp.com/auth/login", {
       headers: {
         "Content-type": "application/json",
-        'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com'
+        'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com/auth/login'
       },
       method: "POST",
       body: JSON.stringify({

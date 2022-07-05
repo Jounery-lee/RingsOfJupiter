@@ -12,7 +12,7 @@ function Join(){
     fetch("https://rings-of-jupiter.herokuapp.com/auth/join", {
       headers: { 
         "content-type": "application/json",
-        'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com' },
+        'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com/join' },
       method: "POST",
       body: JSON.stringify({
         memberid: memberid,

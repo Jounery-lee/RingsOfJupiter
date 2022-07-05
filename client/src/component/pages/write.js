@@ -10,7 +10,7 @@ function Write() {
     fetch("https://rings-of-jupiter.herokuapp.com/crud/write", {
       headers: {
         "content-type": "application/json",
-        "Access-Control-Allow-Origin": "https://rings-of-jupiter.herokuapp.com",
+        "Access-Control-Allow-Origin": "https://rings-of-jupiter.herokuapp.com/crud/write",
       },
       method: "POST",
       body: JSON.stringify({
