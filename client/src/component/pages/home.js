@@ -18,30 +18,39 @@ function Home({ setPage }) {
 
   useEffect(() => {
     async function A() {
-      const a = await fetch("https://rings-of-jupiter.herokuapp.com/topicdata",
-      {headers:{
-        "content-type": "application/json",
-        "Access-Control-Allow-Origin": "https://rings-of-jupiter.herokuapp.com/topicdata",
-      },});
+      const a = await fetch(
+        "https://rings-of-jupiter.herokuapp.com/topicdata",
+        {
+          headers: {
+            "content-type": "application/json",
+            "Access-Control-Allow-Origin":
+              "https://rings-of-jupiter.herokuapp.com/topicdata",
+          },
+          method : 'GET',
+        }
+      );
       const b = await a.json();
       await setData((current) => b);
     }
     A();
   }, []);
 
-//불러온 데이터를 State에 넣는다.
-//State에 들어간 배열을 map을 이용해서 적절한 값으로 return한다.
-//map 메소드 사용에서 아주 아주 아주 취약했기 때문에 이런 경우가 생긴듯 하다.
+  //불러온 데이터를 State에 넣는다.
+  //State에 들어간 배열을 map을 이용해서 적절한 값으로 return한다.
+  //map 메소드 사용에서 아주 아주 아주 취약했기 때문에 이런 경우가 생긴듯 하다.
 
   const TopicList = ({ data }) => {
     return (
       <>
         {data.map((data) => {
-          return <TableRow
-          key={data.id} 
-          no={data.id} 
-          title={data.title} 
-          date={data.date} />;
+          return (
+            <TableRow
+              key={data.id}
+              no={data.id}
+              title={data.title}
+              date={data.date}
+            />
+          );
         })}
       </>
     );
