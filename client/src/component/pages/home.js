@@ -18,7 +18,7 @@ function Home({ setPage }) {
 
   useEffect(() => {
     async function A() {
-      const a = await fetch("http://localhost:3001/topicdata");
+      const a = await fetch("https://rings-of-jupiter.herokuapp.com/topicdata");
       const b = await a.json();
       await setData((current) => b);
     }

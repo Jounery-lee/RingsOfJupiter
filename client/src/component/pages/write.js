@@ -7,7 +7,7 @@ function Write() {
     const author = input[2].value;
     //https://rings-of-jupiter.herokuapp.com/write
     //http://localhost:3001/crud/write
-    fetch("http://localhost:3001/crud/write", {
+    fetch("https://rings-of-jupiter.herokuapp.com/crud/write", {
       headers: {
         "content-type": "application/json",
         "Access-Control-Allow-Origin": "https://rings-of-jupiter.herokuapp.com",

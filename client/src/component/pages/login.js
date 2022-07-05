@@ -8,7 +8,7 @@ function Login(setIsLogin, setPage, isLogin){
     //fetch에서 2번째 인자의.. 공포..
     //http://localhost:3001/auth
     //https://rings-of-jupiter.herokuapp.com/auth/login
-    fetch("http://localhost:3001/auth/login", {
+    fetch("https://rings-of-jupiter.herokuapp.com/auth/login", {
       headers: {
         "Content-type": "application/json",
         'Access-Control-Allow-Origin' : 'https://rings-of-jupiter.herokuapp.com'
