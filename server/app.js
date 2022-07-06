@@ -19,6 +19,7 @@ let s3 = new aws.S3({
 
 const MYSQLPW = s3.config.password
 
+
 const mysql = require("mysql2/promise");
 const connection = mysql.createConnection({
   host: "us-cdbr-east-06.cleardb.net",
