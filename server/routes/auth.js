@@ -3,22 +3,22 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const aws = require('aws-sdk');
+// const aws = require('aws-sdk');
 
-let s3 = new aws.S3({
-  accessKeyId: process.env.S3_KEY,
-  secretAccessKey: process.env.S3_SECRET,
-  password: process.env.REACT_APP_MYSQL,
-});
+// let s3 = new aws.S3({
+//   accessKeyId: process.env.S3_KEY,
+//   secretAccessKey: process.env.S3_SECRET,
+//   password: process.env.REACT_APP_MYSQL,
+// });
 
-const MYSQLPW = s3.config.password
+// const MYSQLPW = s3.config.password
 
 const mysql = require("mysql2/promise");
 const connection = mysql.createConnection({
     host: "us-cdbr-east-06.cleardb.net",
     user: "bbadc38db84c9f",
     database: "heroku_92ea96d00cdd65c",
-    password: MYSQLPW,
+    password: process.env.REACT_APP_MYSQL,
   }); 
 
 const router = express.Router();
