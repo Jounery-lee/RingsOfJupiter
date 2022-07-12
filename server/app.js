@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 app.get("/topicdata", (req, res)=>{
   async function callDb(){
     const topicList = await (await connection).query("SELECT * FROM topic")
+    console.log('topiclist 불러옴')
     res.send(topicList[0])
   }
   callDb();
