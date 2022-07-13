@@ -18,16 +18,23 @@ function Home({ setPage }) {
 
   useEffect(() => {
     async function A() {
-      const a = await fetch(
-        "https://rings-of-jupiter.herokuapp.com/topicdata",{
-          headers: {
-            "content-type": "application/json",
-            "Access-Control-Allow-Origin" : "https://rings-of-jupiter.herokuapp.com/topicdata"},
-          method: "GET",
-        }
-      );
-      const b = await a.json();
-      await setData((current) => b);
+      try {
+        const a = await fetch(
+          "https://rings-of-jupiter.herokuapp.com/topicdata",
+          {
+            headers: {
+              "content-type": "application/json",
+              "Access-Control-Allow-Origin":
+                "https://rings-of-jupiter.herokuapp.com/topicdata",
+            },
+            method: "GET",
+          }
+        );
+        const b = await a.json();
+        await setData((current) => b);
+      } catch (error) {
+        console.error(error);
+      }
     }
     A();
   }, []);
