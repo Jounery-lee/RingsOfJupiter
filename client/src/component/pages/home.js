@@ -16,8 +16,7 @@ function Home({ setPage }) {
 
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    async function A() {
+  async function A() {
       try {
         const a = await fetch(
           "https://rings-of-jupiter.herokuapp.com/topicdata",
@@ -37,7 +36,6 @@ function Home({ setPage }) {
       }
     }
     A();
-  }, []);
 
   //불러온 데이터를 State에 넣는다.
   //State에 들어간 배열을 map을 이용해서 적절한 값으로 return한다.
