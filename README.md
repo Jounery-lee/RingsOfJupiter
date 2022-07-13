@@ -47,6 +47,7 @@
       - 아~~~ 계속 헤로쿠에서 db접속이 안되는것입니다.. => .env의 값이 ''안에 들어가 있을 필요가 없다. 헤로쿠 ConfigVars에 'db비밀번호' 이렇게 되어있던걸 ''떼어주니까 정상작동함.
     - CORS정책 위반은 fetch의 OPTION의 헤더에다가 허용 URL을 넣어주는것으로 해결한다.
     - JWT는 https://www.geeksforgeeks.org/jwt-authentication-with-node-js/ 이것을 참고하라..
+      - JWT 좀 스트레스 받는데? 좀 이따가 해야겠다.
 
   - DB server
     - 기존 Databases를 좀 정리하자.. 웩( 0702 )

@@ -16,7 +16,8 @@ const router = express.Router();
 router.post("/login", (req, res) => {
     const calledData = req.body;
     async function callDb() {
-      //member TABLE을 불러온다. 이게 무슨 문법이냐? 자동수정되는데.
+      try{
+            //member TABLE을 불러온다. 이게 무슨 문법이냐? 자동수정되는데.
       const db = await (await connection).query("SELECT * FROM member");
       //불러온 TABLE에서 맞는 memeber.id가 있는지 확인하고 return으로 있는 객체를 반환함. 배열의 요소들이 다 객체걸랑.
       function findMemberid(memberid) {
@@ -34,6 +35,9 @@ router.post("/login", (req, res) => {
           console.log("비번이 다릅니다.");
         }
       }
+      }catch(error){
+        console.error(error)
+      }
     }
   
     callDb();
@@ -41,27 +45,31 @@ router.post("/login", (req, res) => {
   router.post("/join", (req, res) => {
     const calledData = req.body;
     async function callDb() {
-      //member TABLE을 불러온다. 이게 무슨 문법이냐? 자동수정되는데.
-      const db = await (await connection).query("SELECT * FROM member");
-      //불러온 TABLE에서 맞는 memeber.id가 있는지 확인하고 return으로 있는 객체를 반환함. 배열의 요소들이 다 객체걸랑.
-      function findMemberid(memberid) {
-        return memberid.memberid === calledData.memberid;
-      }
-      // JS의 Array.find()함수 주목!
-      const cheakMember = db[0].find(findMemberid);
-      //아이디가 기존의 db에 들어있는지 아닌지 확인하는 조건문.
-      if (cheakMember === undefined) {
-        console.log("가입자격있음");
-        // 이건 db에 저장하는 SQL문
-        const savemember = await (
-          await connection
-        ).query(`
-        INSERT INTO member (
-            memberid, name, job, password, date, nickname)
-        VALUES ('${calledData.memberid}', '${calledData.name}', '${calledData.job}', '${calledData.password}', CURRENT_DATE(), '${calledData.nickname}')`);
-      } else if (calledData.memberid === cheakMember.memberid) {
-        console.log("이미 있는 아이디");
-      }
+ try{
+        //member TABLE을 불러온다. 이게 무슨 문법이냐? 자동수정되는데.
+        const db = await (await connection).query("SELECT * FROM member");
+        //불러온 TABLE에서 맞는 memeber.id가 있는지 확인하고 return으로 있는 객체를 반환함. 배열의 요소들이 다 객체걸랑.
+        function findMemberid(memberid) {
+          return memberid.memberid === calledData.memberid;
+        }
+        // JS의 Array.find()함수 주목!
+        const cheakMember = db[0].find(findMemberid);
+        //아이디가 기존의 db에 들어있는지 아닌지 확인하는 조건문.
+        if (cheakMember === undefined) {
+          console.log("가입자격있음");
+          // 이건 db에 저장하는 SQL문
+          const savemember = await (
+            await connection
+          ).query(`
+          INSERT INTO member (
+              memberid, name, job, password, date, nickname)
+          VALUES ('${calledData.memberid}', '${calledData.name}', '${calledData.job}', '${calledData.password}', CURRENT_DATE(), '${calledData.nickname}')`);
+        } else if (calledData.memberid === cheakMember.memberid) {
+          console.log("이미 있는 아이디");
+        }
+ }catch(error){
+  console.error(error)
+ }
     }
     callDb();
   });
